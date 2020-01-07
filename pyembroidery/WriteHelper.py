@@ -78,7 +78,7 @@ def write_string(stream, string, encoding='utf8'):
     # python 2,3 code
     try:
         stream.write(bytes(string).encode(encoding))
-    except TypeError:
+    except:
         stream.write(bytes(string, encoding))
 
 
@@ -86,5 +86,5 @@ def write_string_utf8(stream, string):
     # python 2,3 code
     try:
         stream.write(bytes(string).encode('utf8'))
-    except TypeError:
+    except:
         stream.write(bytes(string, 'utf8'))
