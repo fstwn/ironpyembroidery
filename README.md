@@ -4,15 +4,19 @@ This is a modified version of the original pyembroidery library (more specifical
 
 This was made first of all for the project **pyembroideryGH**.
 
-# Use in McNeel Rhinoceros & Grasshopper
+## Use in McNeel Rhinoceros & Grasshopper
 
 For use and installation instructions please refer to https://github.com/fstwn/pyembroideryGH!
 
-# Special Notes & Remarks
+## Special Notes & Remarks
 
 - **SvgWriter is disabled in ironpyembroidery because IronPython can't make use of the needed xml-modules.**
 
-**Below you'll find the original pyembroidery-readme!**
+***
+
+- **Below you'll find the original pyembroidery-readme!**
+
+***
 
 # pyembroidery
 
