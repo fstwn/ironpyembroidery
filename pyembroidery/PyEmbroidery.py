@@ -154,14 +154,16 @@ def supported_formats():
         "reader": Vp3Reader,
         "writer": Vp3Writer,
     })
-    yield ({
-        "description": "Scalable Vector Graphics",
-        "extension": "svg",
-        "extensions": ("svg", "svgz"),
-        "mimetype": "image/svg+xml",
-        "category": "vector",
-        "writer": SvgWriter,
-    })
+    # SvgWriter deactivated because xml module is not working as expected in IronPython
+    #
+    # yield ({
+    #     "description": "Scalable Vector Graphics",
+    #     "extension": "svg",
+    #     "extensions": ("svg", "svgz"),
+    #     "mimetype": "image/svg+xml",
+    #     "category": "vector",
+    #     "writer": SvgWriter,
+    # })
     yield ({
         "description": "Comma-separated values",
         "extension": "csv",
