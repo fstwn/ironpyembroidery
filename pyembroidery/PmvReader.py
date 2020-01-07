@@ -26,7 +26,7 @@ def read_pmv_stitches(f, out, settings=None):
     while True:
         stitch_count = read_int_16le(f)
         block_length = read_int_16le(f)
-        if block_length is None:
+        if block_length == None:
             return
         if block_length >= 256:
             break

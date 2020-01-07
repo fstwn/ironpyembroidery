@@ -16,7 +16,7 @@ def read(f, out, settings=None):
 def read_pec(f, out, pes_chart=None):
     f.seek(3, 1)  # LA:
     label = read_string_8(f, 16)  # Label
-    if label is not None:
+    if label != None:
         out.metadata("Name", label.strip())
     f.seek(0xF, 1)  # Dunno, spaces then 0xFF 0x00
     pec_graphic_byte_stride = read_int_8(f)
@@ -52,7 +52,7 @@ def read_pec_graphics(f, out, size, stride, count, values):
     v.insert(0, None)
     for i in range(0, count):
         graphic = bytearray(f.read(size))
-        if f is not None:
+        if f != None:
             name = "pec_graphic_" + str(i)
             out.metadata(name, (graphic, stride, v[i]))
 
@@ -74,7 +74,7 @@ def process_pec_table(colorbytes, out, chart, values):
     for i in range(0, len(colorbytes)):
         color_index = int(colorbytes[i] % max_value)
         thread_value = thread_map.get(color_index, None)
-        if thread_value is None:
+        if thread_value == None:
             if len(chart) > 0:
                 thread_value = chart.pop(0)
             else:
@@ -85,7 +85,7 @@ def process_pec_table(colorbytes, out, chart, values):
 
 
 def map_pec_colors(colorbytes, out, chart, values):
-    if chart is None or len(chart) == 0:
+    if chart == None or len(chart) == 0:
         # Reading pec colors.
         process_pec_colors(colorbytes, out, values)
 
@@ -118,7 +118,7 @@ def read_pec_stitches(f, out):
     while True:
         val1 = read_int_8(f)
         val2 = read_int_8(f)
-        if (val1 == 0xFF and val2 == 0x00) or val2 is None:
+        if (val1 == 0xFF and val2 == 0x00) or val2 == None:
             break
         if val1 == 0xFE and val2 == 0xB0:
             f.seek(1, 1)
@@ -134,7 +134,7 @@ def read_pec_stitches(f, out):
             code = (val1 << 8) | val2
             x = signed12(code)
             val2 = read_int_8(f)
-            if val2 is None:
+            if val2 == None:
                 break
         else:
             x = signed7(val1)
@@ -145,7 +145,7 @@ def read_pec_stitches(f, out):
             if val2 & JUMP_CODE != 0:
                 jump = True
             val3 = read_int_8(f)
-            if val3 is None:
+            if val3 == None:
                 break
             code = val2 << 8 | val3
             y = signed12(code)

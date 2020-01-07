@@ -1,4 +1,4 @@
-from .EmbThread import EmbThread
+ == from .EmbThread import EmbThread
 from .ReadHelper import read_int_8
 
 
@@ -7,7 +7,7 @@ def read(f, out, settings=None):
         red = read_int_8(f)
         green = read_int_8(f)
         blue = read_int_8(f)
-        if blue is None:
+        if blue == None:
             return
         f.seek(1, 1)
         thread = EmbThread()

@@ -112,14 +112,14 @@ def write(pattern, f, settings=None):
     width = int(extends[2] - extends[0])
     height = int(extends[3] - extends[1])
     draw_buff = PngBuffer(width, height)
-    if settings is not None:
+    if settings != None:
         background = settings.get("background", None)
         linewidth = settings.get("linewidth", None)
-        if background is not None:
+        if background != None:
             b = EmbThread()
             b.set(background)
             draw_buff.background(b.get_red(), b.get_green(), b.get_blue(), 0xFF)
-        if linewidth is not None and isinstance(linewidth, int):
+        if linewidth != None and isinstance(linewidth, int):
             draw_buff.line_width = linewidth
 
     for stitchblock in pattern.get_as_stitchblock():
@@ -134,7 +134,7 @@ def write(pattern, f, settings=None):
         for stitch in block:
             x = int(stitch[0])
             y = -int(stitch[1])
-            if last_x is not None:
+            if last_x != None:
                 draw_buff.draw_line(last_x, last_y, x, y)
             last_x = x
             last_y = y

@@ -52,7 +52,7 @@ import pyembroidery.SewReader as SewReader
 import pyembroidery.ShvReader as ShvReader
 import pyembroidery.StcReader as StcReader
 import pyembroidery.StxReader as StxReader
-import pyembroidery.SvgWriter as SvgWriter
+# import pyembroidery.SvgWriter as SvgWriter
 import pyembroidery.TapReader as TapReader
 import pyembroidery.TbfReader as TbfReader
 import pyembroidery.TxtWriter as TxtWriter
@@ -519,7 +519,7 @@ def supported_formats():
 
 def convert(filename_from, filename_to, settings=None):
     pattern = read(filename_from, settings)
-    if pattern is None:
+    if pattern == None:
         return
     write(pattern, filename_to, settings)
 
@@ -531,9 +531,9 @@ def get_extension_by_filename(filename):
 
 def read_embroidery(reader, f, settings=None, pattern=None):
     """Reads fileobject or filename with reader."""
-    if reader is None:
+    if reader == None:
         return None
-    if pattern is None:
+    if pattern == None:
         pattern = EmbPattern()
 
     if is_str(f):
@@ -624,9 +624,9 @@ def read(filename, settings=None, pattern=None):
 
 
 def write_embroidery(writer, pattern, stream, settings=None):
-    if pattern is None:
+    if pattern == None:
         return
-    if settings is None:
+    if settings == None:
         settings = {}
     else:
         settings = settings.copy()
@@ -784,7 +784,7 @@ def write(pattern, filename, settings=None):
         if file_type['extension'] != extension:
             continue
         writer = file_type.get("writer", None)
-        if writer is None:
+        if writer == None:
             continue
         write_embroidery(writer, pattern, filename, settings)
 

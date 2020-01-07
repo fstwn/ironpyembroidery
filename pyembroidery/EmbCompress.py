@@ -30,7 +30,7 @@ class Huffman:
     def lookup(self, byte_lookup):
         """lookup into the index, returns value and length
         must be requested with 2 bytes."""
-        if self.table is None:
+        if self.table == None:
             return self.default_value, 0
         v = self.table[byte_lookup >> (16 - self.table_width)]
         return v, self.lengths[v]
@@ -172,7 +172,7 @@ class EmbCompress:
         output_data = []
         self.block_elements = -1
         bits_total = (len(input_data) * 8)
-        while bits_total > self.bit_position and (uncompressed_size is None or len(output_data) <= uncompressed_size):
+        while bits_total > self.bit_position and (uncompressed_size == None or len(output_data) <= uncompressed_size):
             character = self.get_token()
             if character <= 255:  # literal.
                 output_data.append(character)

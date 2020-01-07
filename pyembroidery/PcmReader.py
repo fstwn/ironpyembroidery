@@ -26,7 +26,7 @@ def read_pc_file(f, out, settings=None):
     f.seek(2, 0)
 
     colors = read_int_16be(f)
-    if colors is None:
+    if colors == None:
         return  # File is blank.
     for i in range(0, colors):
         color_index = read_int_16be(f)
@@ -40,7 +40,7 @@ def read_pc_file(f, out, settings=None):
         y = read_int_24be(f)
         c1 = read_int_8(f)
         ctrl = read_int_8(f)
-        if ctrl is None:
+        if ctrl == None:
             break
         x = signed24(x)
         y = -signed24(y)

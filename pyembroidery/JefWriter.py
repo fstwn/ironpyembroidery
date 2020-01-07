@@ -24,7 +24,7 @@ def write(pattern, f, settings=None):
     command_count_max = 3
 
     date_string = datetime.datetime.today().strftime('%Y%m%d%H%M%S')
-    if settings is not None:
+    if settings != None:
         trims = settings.get("trims", trims)
         command_count_max = settings.get('trim_at', command_count_max)
         date_string = settings.get("date", date_string)

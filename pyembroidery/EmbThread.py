@@ -4,7 +4,7 @@ def build_unique_palette(thread_palette, threadlist):
     chart = [None] * len(thread_palette)  # Create a lookup chart.
     for thread in set(threadlist):  # for each unique color, move closest remaining thread to lookup chart.
         index = thread.find_nearest_color_index(thread_palette)
-        if index is None:
+        if index == None:
             break  # No more threads remain in palette
         thread_palette[index] = None  # entries may not be reused.
         chart[index] = thread  # assign the given index to the lookup.
@@ -51,7 +51,7 @@ def find_nearest_color_index(find_color, values):
     closest_index = None
     current_closest_value = float("inf")
     for current_index, t in enumerate(values):
-        if t is None:
+        if t == None:
             continue
         dist = color_distance_red_mean(
             red,
@@ -105,14 +105,14 @@ class EmbThread:
         self.chart = None  # type: str
         self.weight = None  # type: str
         # description, catalog_number, details, brand, chart, weight
-        if thread is not None:
+        if thread != None:
             self.set(thread)
 
     def __ne__(self, other):
         return not self.__eq__(other)
 
     def __eq__(self, other):
-        if other is None:
+        if other == None:
             return False
         if isinstance(other, int):
             return self.color & 0xFFFFFF == other & 0xFFFFFF
@@ -144,7 +144,7 @@ class EmbThread:
         return self.color & 0xFFFFFF
 
     def __str__(self):
-        if self.description is None:
+        if self.description == None:
             return "EmbThread %s" % self.hex_color()
         else:
             return "EmbThread %s %s" % (self.description, self.hex_color())

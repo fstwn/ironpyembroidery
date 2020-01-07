@@ -69,7 +69,7 @@ def draw(points, graphic, stride=6):
 
 
 def draw_scaled(extends, points, graphic, stride, buffer=5):
-    if extends is None:
+    if extends == None:
         draw(points, graphic, stride)
         return
     try:

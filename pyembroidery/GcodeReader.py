@@ -9,12 +9,12 @@ def parse(f):
     ord_Z = ord('Z')
     while True:
         byte = f.read(1)
-        if byte is None:
+        if byte == None:
             break
         if len(byte) == 0:
             break
         is_end = byte == b'\n' or byte == b'\r'
-        if comment is not None:
+        if comment != None:
             if byte == b')' or is_end:
                 command_map['comment'] = comment
                 comment = None

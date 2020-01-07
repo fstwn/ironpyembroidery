@@ -64,7 +64,7 @@ def write_threads(pattern, f):
 
 
 def write(pattern, f, settings=None):
-    if settings is None:
+    if settings == None:
         settings = {}
     increment_value = settings.get('stitch_z_travel', 10.0)
     write_data(pattern, f)

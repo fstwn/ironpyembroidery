@@ -49,7 +49,7 @@ def write_normal(pattern, f):
 
 def write(pattern, f, settings=None):
     mimic = False
-    if settings is not None:
+    if settings != None:
         if "mimic" in settings:
             mimic = True
         version = settings.get("version", "default")

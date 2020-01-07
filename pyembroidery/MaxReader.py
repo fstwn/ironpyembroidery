@@ -15,7 +15,7 @@ def read(f, out, settings=None):
         y = signed24(y)
         x *= MAX_SIZE_CONVERSION_RATIO
         y *= MAX_SIZE_CONVERSION_RATIO
-        if c1 is None:
+        if c1 == None:
             break
         out.stitch_abs(x, y)
     out.end()

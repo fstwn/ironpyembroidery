@@ -2,17 +2,17 @@ from .EmbConstant import *
 
 
 def encode_thread_change(command, thread=None, needle=None, order=None):
-    if thread is None:
+    if thread == None:
         thread = 0
     else:
         thread &= 0xFF
         thread += 1
-    if needle is None:
+    if needle == None:
         needle = 0
     else:
         needle &= 0xFF
         needle += 1
-    if order is None:
+    if order == None:
         order = 0
     else:
         order &= 0xFF

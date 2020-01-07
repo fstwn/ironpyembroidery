@@ -88,11 +88,11 @@ def dst_read_stitches(f, out, settings=None):
     count_max = 3
     clipping = True
     trim_distance = None
-    if settings is not None:
+    if settings != None:
         count_max = settings.get('trim_at', count_max)
         trim_distance = settings.get("trim_distance", trim_distance)
         clipping = settings.get('clipping', clipping)
-    if trim_distance is not None:
+    if trim_distance != None:
         trim_distance *= 10  # Pixels per mm. Native units are 1/10 mm.
     out.interpolate_trims(count_max, trim_distance, clipping)
 

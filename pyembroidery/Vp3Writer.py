@@ -196,15 +196,15 @@ def vp3_write_thread(f, thread):
     f.write(b'\x01\x00')  # Single color, no transition.
     write_int_24be(f, thread.color)
     f.write(b'\x00\x00\x00\x05\x28')  # no parts, no length, Rayon 40-weight
-    if thread.catalog_number is not None:
+    if thread.catalog_number != None:
         vp3_write_string_8(f, thread.catalog_number)
     else:
         vp3_write_string_8(f, "")
-    if thread.description is not None:
+    if thread.description != None:
         vp3_write_string_8(f, thread.description)
     else:
         vp3_write_string_8(f, thread.hex_color())
-    if thread.brand is not None:
+    if thread.brand != None:
         vp3_write_string_8(f, thread.brand)
     else:
         vp3_write_string_8(f, "")

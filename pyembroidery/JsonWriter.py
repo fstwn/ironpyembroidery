@@ -8,11 +8,11 @@ def decoded_name(names, data):
     command = decode_embroidery_command(data)
     try:
         name = names[command[0]]
-        if command[1] is not None:
+        if command[1] != None:
             name = name + " t" + str(command[1])
-        if command[2] is not None:
+        if command[2] != None:
             name = name + " n" + str(command[2])
-        if command[3] is not None:
+        if command[3] != None:
             name = name + " o" + str(command[3])
     except (IndexError, KeyError):
         name = "UNKNOWN " + str(data)

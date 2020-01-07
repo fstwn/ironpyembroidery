@@ -67,19 +67,19 @@ def read_pes_string(f):
 
 def read_pes_metadata(f, out):
     v = read_pes_string(f)
-    if v is not None and len(v) > 0:
+    if v != None and len(v) > 0:
         out.metadata("name", v)
     v = read_pes_string(f)
-    if v is not None and len(v) > 0:
+    if v != None and len(v) > 0:
         out.metadata("category", v)
     v = read_pes_string(f)
-    if v is not None and len(v) > 0:
+    if v != None and len(v) > 0:
         out.metadata("author", v)
     v = read_pes_string(f)
-    if v is not None and len(v) > 0:
+    if v != None and len(v) > 0:
         out.metadata("keywords", v)
     v = read_pes_string(f)
-    if v is not None and len(v) > 0:
+    if v != None and len(v) > 0:
         out.metadata("comments", v)
 
 
@@ -109,7 +109,7 @@ def read_pes_header_version_5(f, out, threadlist):
     read_pes_metadata(f, out)
     f.seek(24, 1)  # this is 36 in version 6 and 24 in version 5
     v = read_pes_string(f)
-    if v is not None and len(v) > 0:
+    if v != None and len(v) > 0:
         out.metadata("image", v)
     f.seek(24, 1)
     count_programmable_fills = read_int_16le(f)
@@ -131,7 +131,7 @@ def read_pes_header_version_6(f, out, threadlist):
     read_pes_metadata(f, out)
     f.seek(36, 1)  # this is 36 in version 6 and 24 in version 5
     v = read_pes_string(f)
-    if v is not None and len(v) > 0:
+    if v != None and len(v) > 0:
         out.metadata("image_file", v)
     f.seek(24, 1)
     count_programmable_fills = read_int_16le(f)

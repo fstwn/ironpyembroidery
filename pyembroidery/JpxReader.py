@@ -38,7 +38,7 @@ def read(f, out, settings=None):
     f.seek(0x18, 1)
     for i in range(0, colors):
         color_index = read_int_32le(f)
-        if color_index is None:
+        if color_index == None:
             break
         out.add_thread({
             "color": "random",

@@ -25,7 +25,7 @@ def write(pattern, f, settings=None):
     pattern.interpolate_stop_as_duplicate_color()
     version = VERSION_1
     truncated = False
-    if settings is not None:
+    if settings != None:
         version = settings.get("pes version", VERSION_1)  # deprecated, use "version".
         version = settings.get("version", version)
         truncated = settings.get("truncated", False)
@@ -210,7 +210,7 @@ def write_pes_addendum(f, color_info):
 
 
 def write_pes_string_8(f, string):
-    if string is None:
+    if string == None:
         write_int_8(f, 0)
         return
     if len(string) > 255:
@@ -220,7 +220,7 @@ def write_pes_string_8(f, string):
 
 
 def write_pes_string_16(f, string):
-    if string is None:
+    if string == None:
         write_int_16le(f, 0)
         return
     write_int_16le(f, len(string))

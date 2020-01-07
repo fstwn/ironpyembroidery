@@ -103,7 +103,7 @@ def encode_record(x, y, flags):
 def write(pattern, f, settings=None):
     extended_header = False
     trim_at = 3
-    if settings is not None:
+    if settings != None:
         extended_header = settings.get("extended header", extended_header)  # deprecated, use version="extended"
         version = settings.get("version", "default")
         if version == "extended":
@@ -140,10 +140,10 @@ def write(pattern, f, settings=None):
     write_string_utf8(f, "PD:%6s\r" % "******")
     if extended_header:
         author = pattern.get_metadata("author")
-        if author is not None:
+        if author != None:
             write_string_utf8(f, "AU:%s\r" % author)
         meta_copyright = pattern.get_metadata("copyright")
-        if meta_copyright is not None:
+        if meta_copyright != None:
             write_string_utf8(f, "CP:%s\r" % meta_copyright)
         if len(pattern.threadlist) > 0:
             for thread in pattern.threadlist:

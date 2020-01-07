@@ -122,49 +122,49 @@ class EmbPattern:
 
     def move(self, dx=0, dy=0, position=None):
         """Move dx, dy"""
-        if position is None:
+        if position == None:
             self.add_stitch_relative(JUMP, dx, dy)
         else:
             self.insert_stitch_relative(position, JUMP, dx, dy)
 
     def move_abs(self, x, y, position=None):
         """Move absolute x, y"""
-        if position is None:
+        if position == None:
             self.add_stitch_absolute(JUMP, x, y)
         else:
             self.insert(position, JUMP, x, y)
 
     def stitch(self, dx=0, dy=0, position=None):
         """Stitch dx, dy"""
-        if position is None:
+        if position == None:
             self.add_stitch_relative(STITCH, dx, dy)
         else:
             self.insert_stitch_relative(position, STITCH, dx, dy)
 
     def stitch_abs(self, x, y, position=None):
         """Stitch absolute x, y"""
-        if position is None:
+        if position == None:
             self.add_stitch_absolute(STITCH, x, y)
         else:
             self.insert(position, STITCH, x, y)
 
     def stop(self, dx=0, dy=0, position=None):
         """Stop dx, dy"""
-        if position is None:
+        if position == None:
             self.add_stitch_relative(STOP, dx, dy)
         else:
             self.insert_stitch_relative(position, STOP, dx, dy)
 
     def trim(self, dx=0, dy=0, position=None):
         """Trim dx, dy"""
-        if position is None:
+        if position == None:
             self.add_stitch_relative(TRIM, dx, dy)
         else:
             self.insert_stitch_relative(position, TRIM, dx, dy)
 
     def color_change(self, dx=0, dy=0, position=None):
         """Color Change dx, dy"""
-        if position is None:
+        if position == None:
             self.add_stitch_relative(COLOR_CHANGE, dx, dy)
         else:
             self.insert_stitch_relative(position, COLOR_CHANGE, dx, dy)
@@ -172,28 +172,28 @@ class EmbPattern:
     def needle_change(self, needle=0, dx=0, dy=0, position=None):
         """Needle change, needle, dx, dy"""
         cmd = encode_thread_change(NEEDLE_SET, None, needle)
-        if position is None:
+        if position == None:
             self.add_stitch_relative(cmd, dx, dy)
         else:
             self.insert_stitch_relative(position, cmd, dx, dy)
 
     def sequin_eject(self, dx=0, dy=0, position=None):
         """Eject Sequin dx, dy"""
-        if position is None:
+        if position == None:
             self.add_stitch_relative(SEQUIN_EJECT, dx, dy)
         else:
             self.insert_stitch_relative(position, SEQUIN_EJECT, dx, dy)
 
     def sequin_mode(self, dx=0, dy=0, position=None):
         """Eject Sequin dx, dy"""
-        if position is None:
+        if position == None:
             self.add_stitch_relative(SEQUIN_MODE, dx, dy)
         else:
             self.insert_stitch_relative(position, SEQUIN_MODE, dx, dy)
 
     def end(self, dx=0, dy=0, position=None):
         """End Design dx, dy"""
-        if position is None:
+        if position == None:
             self.add_stitch_relative(END, dx, dy)
         else:
             self.insert_stitch_relative(position, END, dx, dy)
@@ -397,7 +397,7 @@ class EmbPattern:
             position += len(self.stitches)  # I need positive positions.
         if position == 0:
             self.stitches.insert(0, [dx, dy, TRIM])  # started (0,0)
-        elif position == len(self.stitches) or position is None:  # This is properly just an add.
+        elif position == len(self.stitches) or position == None:  # This is properly just an add.
             self.add_stitch_relative(cmd, dx, dy)
         elif 0 < position < len(self.stitches):
             p = self.stitches[position - 1]
@@ -419,9 +419,9 @@ class EmbPattern:
         self.stitches.append([x, y, cmd])
 
     def add_block(self, block, thread=None):
-        if thread is not None:
+        if thread != None:
             self.add_thread(thread)
-        if block is None:
+        if block == None:
             return
 
         if isinstance(block, list) or isinstance(block, tuple):
@@ -454,7 +454,7 @@ class EmbPattern:
         threadlist = self.threadlist
         block = stitchblock[0]
         thread = stitchblock[1]
-        if len(threadlist) == 0 or thread is not threadlist[-1]:
+        if len(threadlist) == 0 or thread != threadlist[-1]:
             threadlist.append(thread)
             self.add_stitch_relative(COLOR_BREAK)
         else:
@@ -511,7 +511,7 @@ class EmbPattern:
             if data == STITCH or data == SEW_TO or data == NEEDLE_AT:
                 if init_color:
                     try:
-                        if last_change is not None and thread_index != 0 and \
+                        if last_change != None and thread_index != 0 and \
                                 self.threadlist[thread_index - 1] == self.threadlist[thread_index]:
                             del self.threadlist[thread_index]
                             self.stitches[last_change][2] = STOP
@@ -617,7 +617,7 @@ class EmbPattern:
                 jump_dy += dy
                 if not trimmed:
                     if jump_count == jumps_to_require_trim or \
-                            distance_to_require_trim is not None and \
+                            distance_to_require_trim != None and \
                             (
                                     abs(jump_dy) > distance_to_require_trim or \
                                     abs(jump_dx) > distance_to_require_trim

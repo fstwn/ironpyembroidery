@@ -12,7 +12,7 @@ def read(f, out, settings=None):
     threadset = get_thread_set()
     for i in range(0, color_count):
         color_index = read_int_8(f)
-        if color_index is None:
+        if color_index == None:
             return  # File terminated before expected end.
         out.add_thread(threadset[color_index % len(threadset)])
     byte_size = pec_graphic_byte_stride * pec_graphic_icon_height
@@ -36,4 +36,3 @@ def read(f, out, settings=None):
     f.seek(color_count2 + 0x1D, 1)  # 1D toto back
     read_pec_stitches(f, out)
     out.interpolate_duplicate_color_as_stop()
-

@@ -28,7 +28,7 @@ def write(pattern, f, settings=None):
 
 def write_pec(pattern, f, threadlist=None):
     extends = pattern.bounds()
-    if threadlist is None:
+    if threadlist == None:
         pattern.fix_color_count()
         threadlist = pattern.threadlist
     color_info = write_pec_header(pattern, f, threadlist)
@@ -51,7 +51,7 @@ def write_pec_header(pattern, f, threadlist):
     rgb_list = [thread.color for thread in threadlist]
 
     current_thread_count = len(color_index_list)
-    if current_thread_count is not 0:
+    if current_thread_count != 0:
         f.write(b'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20')
         add_value = current_thread_count - 1
         color_index_list.insert(0, add_value)

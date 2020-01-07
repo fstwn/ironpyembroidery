@@ -42,7 +42,7 @@ def read(f, out, settings=None):
             flags = JUMP
         b0 = read_int_8(f)
         b1 = read_int_8(f)
-        if b1 is None:
+        if b1 == None:
             break
         if stitches_since_stop >= max_stitches:
             out.color_change()

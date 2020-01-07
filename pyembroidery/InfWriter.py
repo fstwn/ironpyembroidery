@@ -20,10 +20,10 @@ def write(pattern, f, settings=None):
     index = 0
     for thread in pattern.threadlist:
         details = thread.description
-        if details is None:
+        if details == None:
             details = "Unknown"
         chart = thread.chart
-        if chart is None:
+        if chart == None:
             chart = "Unknown"
         write_int_16be(f, 11 + len(details) + len(chart))  # 2 + 2 + 1 + 1 + 1 + 2 + d + 1 + c + 1 = 11 + d + c
         write_int_16be(f, index)  # record index

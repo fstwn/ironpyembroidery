@@ -3,7 +3,7 @@ import math
 
 class EmbMatrix:
     def __init__(self, m=None):
-        if m is None:
+        if m == None:
             self.m = self.get_identity()
         else:
             self.m = m
@@ -52,11 +52,11 @@ class EmbMatrix:
         ]
 
     def post_scale(self, sx=1, sy=None, x=0, y=0):
-        if sy is None:
+        if sy == None:
             sy = sx
-        if x is None:
+        if x == None:
             x = 0
-        if y is None:
+        if y == None:
             y = 0
         if x == 0 and y == 0:
             self.m = self.matrix_multiply(self.m, self.get_scale(sx, sy))
@@ -69,9 +69,9 @@ class EmbMatrix:
         self.m = self.matrix_multiply(self.m, self.get_translate(tx, ty))
 
     def post_rotate(self, theta, x=0, y=0):
-        if x is None:
+        if x == None:
             x = 0
-        if y is None:
+        if y == None:
             y = 0
         if x == 0 and y == 0:
             self.m = self.matrix_multiply(self.m, self.get_rotate(theta))
@@ -85,7 +85,7 @@ class EmbMatrix:
             self.m = self.matrix_multiply(self.m, mx)
 
     def pre_scale(self, sx=1, sy=None):
-        if sy is None:
+        if sy == None:
             sy = sx
         self.m = self.matrix_multiply(self.get_scale(sx, sy), self.m)
 
@@ -101,7 +101,7 @@ class EmbMatrix:
 
     def point_in_matrix_space(self, v0, v1=None):
         m = self.m
-        if v1 is None:
+        if v1 == None:
             try:
                 return [
                     v0[0] * m[0] + v0[1] * m[3] + 1 * m[6],
@@ -135,7 +135,7 @@ class EmbMatrix:
 
     @staticmethod
     def get_scale(sx, sy=None):
-        if sy is None:
+        if sy == None:
             sy = sx
         return \
             sx, 0, 0, \

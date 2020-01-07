@@ -25,7 +25,7 @@ def read_pc_file(f, out, settings=None):
         c1 = read_int_8(f)
         y = read_int_24le(f)
         ctrl = read_int_8(f)
-        if ctrl is None:
+        if ctrl == None:
             break
         x = signed24(x)
         y = -signed24(y)

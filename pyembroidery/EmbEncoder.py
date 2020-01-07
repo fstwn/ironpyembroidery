@@ -6,7 +6,7 @@ from .EmbMatrix import EmbMatrix
 
 class Transcoder:
     def __init__(self, settings=None):
-        if settings is None:
+        if settings == None:
             settings = {}
         self.max_stitch = settings.get("max_stitch", float('inf'))
         self.max_jump = settings.get("max_jump", float('inf'))
@@ -28,15 +28,15 @@ class Transcoder:
         self.explicit_trim = settings.get("explicit_trim", False)
 
         self.tie_on_contingency = settings.get("tie_on", CONTINGENCY_TIE_ON_NONE)
-        if self.tie_on_contingency is True:
+        if self.tie_on_contingency == True:
             self.tie_on_contingency = CONTINGENCY_TIE_ON_THREE_SMALL
-        if self.tie_on_contingency is False:
+        if self.tie_on_contingency == False:
             self.tie_on_contingency = CONTINGENCY_TIE_ON_NONE
 
         self.tie_off_contingency = settings.get("tie_off", CONTINGENCY_TIE_OFF_NONE)
-        if self.tie_off_contingency is True:
+        if self.tie_off_contingency == True:
             self.tie_off_contingency = CONTINGENCY_TIE_OFF_THREE_SMALL
-        if self.tie_off_contingency is False:
+        if self.tie_off_contingency == False:
             self.tie_off_contingency = CONTINGENCY_TIE_OFF_NONE
 
         self.long_stitch_contingency = \
@@ -44,7 +44,7 @@ class Transcoder:
 
         self.matrix = EmbMatrix()
         translate = settings.get("translate", None)
-        if translate is not None:
+        if translate != None:
             try:
                 self.matrix.post_translate(translate[0], translate[1])
             except IndexError:
@@ -53,7 +53,7 @@ class Transcoder:
                 except AttributeError:
                     pass
         scale = settings.get("scale", None)
-        if scale is not None:
+        if scale != None:
             try:
                 self.matrix.post_scale(scale[0], scale[1])
             except (IndexError, TypeError):
@@ -62,7 +62,7 @@ class Transcoder:
                 except AttributeError:
                     self.matrix.post_scale(scale, scale)
         rotate = settings.get("rotate", None)
-        if rotate is not None:
+        if rotate != None:
             self.matrix.post_rotate(rotate)
         self.source_pattern = None
         self.destination_pattern = None
@@ -78,7 +78,7 @@ class Transcoder:
         self.high_flags = 0
 
     def transcode(self, source_pattern, destination_pattern):
-        if source_pattern is destination_pattern:
+        if source_pattern == destination_pattern:
             # both objects are same. Source is copy, destination is cleared.
             source_pattern = destination_pattern.copy()
             destination_pattern.clear()
@@ -128,7 +128,7 @@ class Transcoder:
         change_sequence[0] = [None, None, None, None]
         for flags, thread, needle, order, current_index in self.get_as_thread_change_sequence_events():
             if flags == SET_CHANGE_SEQUENCE:
-                if order is None:
+                if order == None:
                     try:
                         current = change_sequence[lookahead_index]
                     except KeyError:
@@ -151,10 +151,10 @@ class Transcoder:
                     lookahead_index = current_index + 1
             if flags == COLOR_CHANGE or flags == NEEDLE_SET:
                 current[0] = flags
-            if thread is not None:
+            if thread != None:
                 current[1] = thread
                 current[3] = self.source_pattern.get_thread_or_filler(thread)
-            if needle is not None:
+            if needle != None:
                 current[2] = needle
         # TODO: account for contingency where threadset repeats threads without explicit values set within the commands.
 
@@ -162,18 +162,18 @@ class Transcoder:
         thread_index = 0
         needle_index = 1
         for order, s in change_sequence.items():
-            if s[0] is None:
+            if s[0] == None:
                 s[0] = self.thread_change_command
-            if s[1] is None:
+            if s[1] == None:
                 s[1] = thread_index
                 thread_index += 1
-            if s[2] is None:
+            if s[2] == None:
                 s[2] = needle_index
                 if s[2] > needle_limit:
                     s[2] = (s[2] - 1) % needle_limit
                     s[2] += 1
                 needle_index += 1
-            if s[3] is None:
+            if s[3] == None:
                 s[3] = self.source_pattern.get_thread_or_filler(s[1])
         return change_sequence
 
@@ -359,9 +359,9 @@ class Transcoder:
         self.destination_pattern.stitches.append([x, y, cmd])
 
     def add(self, flags, x=None, y=None):
-        if x is None:
+        if x == None:
             x = self.needle_x
-        if y is None:
+        if y == None:
             y = self.needle_y
         flags |= self.high_flags
         self.destination_pattern.stitches.append([x, y, flags])
@@ -581,9 +581,9 @@ class Transcoder:
 
     def position_will_exceed_constraint(self, length=None, new_x=None, new_y=None):
         """Check if the stitch is too long before trying to deal with it."""
-        if length is None:
+        if length == None:
             length = self.max_stitch
-        if new_x is None or new_y is None:
+        if new_x == None or new_y == None:
             p = self.matrix.point_in_matrix_space(self.stitch[0], self.stitch[1])
             new_x = p[0]
             new_y = p[1]
@@ -629,7 +629,7 @@ class Transcoder:
         """Tie-on, Tie-off. Lock stitch from current location towards
         anchor location.Ends again at lock location. May not exceed
         max_length in the process."""
-        if max_length is None:
+        if max_length == None:
             max_length = self.max_stitch
         transcode = self.destination_pattern.stitches
         length = distance(x, y, anchor_x, anchor_y)
