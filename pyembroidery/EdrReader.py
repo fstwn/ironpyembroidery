@@ -1,4 +1,4 @@
- == from .EmbThread import EmbThread
+from .EmbThread import EmbThread
 from .ReadHelper import read_int_8
 
 
