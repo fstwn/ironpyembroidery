@@ -11,9 +11,6 @@ For use and installation instructions please refer to https://github.com/fstwn/p
 ## Special Notes & Remarks
 
 - **SvgWriter is disabled in ironpyembroidery because IronPython can't make use of the needed xml-modules.**
-
-***
-
 - **Below you'll find the original pyembroidery-readme!**
 
 ***
