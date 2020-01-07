@@ -1,8 +1,10 @@
 # ironpyembroidery
 
-This is a modified version of the original python27 branch of pyembroidery. It was modified to work with the IronPython 2.7.8.0 interpreters in McNeel Rhinoceros 5 & 6 aswell as their Grasshopper Plugin.
+This is a modified version of the original pyembroidery library (python 27 branch). It was modified to work with the IronPython 2.7.8.0 interpreters in McNeel Rhinoceros 5 & 6 aswell as the Grasshopper Plugin.
 
-This was made first of all for pyembroideryGH: https://github.com/fstwn/pyembroideryGH
+This was made first of all for my project pyembroideryGH: https://github.com/fstwn/pyembroideryGH
+
+Below you'll find the original pyembroidery-readme. **For installation instructions please refer to https://github.com/fstwn/pyembroideryGH!**
 
 # pyembroidery
 
